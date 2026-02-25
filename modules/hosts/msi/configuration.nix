@@ -91,9 +91,6 @@
       i18n.defaultLocale = "en_US.UTF-8";
 
       services.tailscale.enable = true;
-      environment.systemPackages = [
-        inputs.agenix.packages."x86_64-linux".default
-      ];
 
       nix = {
         settings.experimental-features = [
