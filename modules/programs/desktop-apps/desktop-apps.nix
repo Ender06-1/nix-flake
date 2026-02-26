@@ -38,11 +38,11 @@
         mimeApps = {
           enable = true;
           defaultApplicationPackages = with pkgs; [
-            file-roller
-            libreoffice-fresh
-            vlc
             papers
             loupe
+            vlc
+            libreoffice-fresh
+            file-roller
           ];
         };
       };
