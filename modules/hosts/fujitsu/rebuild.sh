@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FLAKE_PATH="$HOME/nixos-config"
+FLAKE_PATH="$HOME/nix-flake"
 
 HOST_CONFIG="$FLAKE_PATH#fujitsu"
 HOST=admin@192.168.0.2

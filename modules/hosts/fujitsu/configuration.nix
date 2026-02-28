@@ -26,12 +26,12 @@
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/55a93207-ba33-44e5-8967-f3beab8ae5dc";
+        device = "/dev/disk/by-uuid/34590a90-0083-4543-9d82-ed0b5574421d";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/1892-2E92";
+        device = "/dev/disk/by-uuid/0CFE-5152";
         fsType = "vfat";
         options = [
           "fmask=0077"
@@ -40,7 +40,7 @@
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-uuid/7f7fce8f-e5de-4308-baf5-a1acb34e0202"; }
+        { device = "/dev/disk/by-uuid/7458e041-e94f-463a-97ab-2dd9cbdfc961"; }
       ];
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -57,16 +57,28 @@
             MAILADDR ndxendernight@gmail.com
 
             DEVICE partitions
-            ARRAY /dev/md127 metadata=1.2 UUID=10972912:7dbdf640:0347c360:18fb2100
+            ARRAY /dev/md127 metadata=1.2 UUID=b38c2ca5:505e5f6a:18e76936:e5a7ac4d
           '';
         };
         tmp.cleanOnBoot = true;
       };
 
       fileSystems."/mnt/storage" = {
-        device = "/dev/disk/by-uuid/2a99cbd5-b3a6-495e-89d4-ed357b432a89";
+        device = "/dev/disk/by-uuid/44ee60cd-e543-4cca-9278-8947bcb2ebcd";
         fsType = "ext4";
       };
+
+      nix = {
+        settings.experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        gc = {
+          automatic = true;
+          dates = "23:00";
+        };
+      };
+      nixpkgs.config.allowUnfree = true;
 
       networking = {
         hostName = "fujitsu";
@@ -87,9 +99,6 @@
           "8.8.8.8"
         ];
       };
-
-      nix.settings.trusted-users = [ "admin" ];
-      nixpkgs.config.allowUnfree = true;
 
       time.timeZone = "Europe/Paris";
       i18n.defaultLocale = "en_US.UTF-8";
@@ -113,6 +122,7 @@
         btop
         tree
         wget
+        mdadm
       ];
 
       virtualisation.docker.enable = true;
@@ -127,21 +137,21 @@
         };
       };
 
-      services.tailscale.enable = true;
-
-      services.caddy = {
-        enable = true;
-        package = pkgs.caddy.withPlugins {
-          plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20251204171825-f070d146dd61" ];
-          hash = "sha256-cK7C5ISsTwX0FMf891s/Vr22JvRqYEC8GkLfP1L1Mus=";
-        };
-      };
-
-      services.caddy.virtualHosts."dockge.tailb1bb3f.ts.net".extraConfig = ''
-        bind tailscale/dockge
-        tailscale_auth
-        reverse_proxy 127.0.0.1:8000
-      '';
+      # services.tailscale.enable = true;
+      #
+      # services.caddy = {
+      #   enable = true;
+      #   package = pkgs.caddy.withPlugins {
+      #     plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20251204171825-f070d146dd61" ];
+      #     hash = "sha256-cK7C5ISsTwX0FMf891s/Vr22JvRqYEC8GkLfP1L1Mus=";
+      #   };
+      # };
+      #
+      # services.caddy.virtualHosts."dockge.tailb1bb3f.ts.net".extraConfig = ''
+      #   bind tailscale/dockge
+      #   tailscale_auth
+      #   reverse_proxy 127.0.0.1:8000
+      # '';
 
       system.stateVersion = "25.11";
     };
