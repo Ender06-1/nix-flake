@@ -34,7 +34,10 @@
         };
       };
 
-      programs.yazi.enable = true;
+      programs.yazi = {
+        enable = true;
+        shellWrapperName = "y";
+      };
 
       programs.zoxide.enable = true;
 

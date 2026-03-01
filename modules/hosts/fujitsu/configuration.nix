@@ -123,6 +123,7 @@
         tree
         wget
         mdadm
+        fastfetch
       ];
 
       virtualisation.docker.enable = true;
