@@ -139,21 +139,28 @@
         };
       };
 
-      # services.tailscale.enable = true;
-      #
-      # services.caddy = {
-      #   enable = true;
-      #   package = pkgs.caddy.withPlugins {
-      #     plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20251204171825-f070d146dd61" ];
-      #     hash = "sha256-cK7C5ISsTwX0FMf891s/Vr22JvRqYEC8GkLfP1L1Mus=";
-      #   };
-      # };
-      #
-      # services.caddy.virtualHosts."dockge.tailb1bb3f.ts.net".extraConfig = ''
-      #   bind tailscale/dockge
-      #   tailscale_auth
-      #   reverse_proxy 127.0.0.1:8000
-      # '';
+      services.tailscale.enable = true;
+
+      services.caddy = {
+        enable = true;
+        package = pkgs.caddy.withPlugins {
+          plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac" ];
+          hash = "sha256-1BAY6oZ1qJCKlh0Y2KKqw87A45EUPVtwS2Su+LfXtCc=";
+        };
+        environmentFile = config.age.secrets.caddy.path;
+      };
+
+      age.secrets.caddy.file = ./_secrets/caddy.age;
+
+      systemd.tmpfiles.rules = [
+        "d /opt/dockge 0770 admin users -"
+      ];
+
+      services.caddy.virtualHosts."dockge.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/dockge
+        tailscale_auth
+        reverse_proxy 127.0.0.1:5001
+      '';
 
       system.stateVersion = "25.11";
     };

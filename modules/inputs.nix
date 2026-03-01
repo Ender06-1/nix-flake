@@ -12,7 +12,17 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        darwin.follows = "";
+      };
+    };
   };
 
-  imports = [ inputs.home-manager.flakeModules.home-manager ];
+  imports = [
+    inputs.home-manager.flakeModules.home-manager
+  ];
 }

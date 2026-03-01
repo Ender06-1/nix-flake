@@ -5,6 +5,13 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
+    agenix = {
+      inputs = {
+        darwin.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:ryantm/agenix";
+    };
     caelestia-shell = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:caelestia-dots/shell";
