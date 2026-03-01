@@ -124,6 +124,7 @@
         wget
         mdadm
         fastfetch
+        restic
       ];
 
       virtualisation.docker.enable = true;

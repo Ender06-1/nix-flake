@@ -11,7 +11,7 @@
       enable = true;
       x11Support = false;
       settings = {
-        session_log = "./local/state/ly-session.log";
+        session_log = ".local/state/ly-session.log";
       };
     };
 
