@@ -64,6 +64,7 @@
         userDirs = {
           enable = true;
           createDirectories = true;
+          setSessionVariables = false;
         };
         configFile."hypr" = {
           source = ./configs/hypr;
