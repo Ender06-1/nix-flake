@@ -20,6 +20,7 @@
 
           hyprland-laptop
           desktop-apps
+          self-hosted
         ];
 
       boot.initrd.availableKernelModules = [
@@ -138,6 +139,7 @@
             shell
             cli-tools
             tmux
+            self-hosted
           ];
 
           home.username = "matheo";

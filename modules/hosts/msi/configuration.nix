@@ -143,6 +143,7 @@
             shell
             cli-tools
             tmux
+            self-hosted
           ];
 
           home.username = "matheo";

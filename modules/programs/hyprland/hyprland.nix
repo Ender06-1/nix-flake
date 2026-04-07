@@ -20,6 +20,8 @@
       pulse.enable = true;
     };
 
+    security.polkit.enable = true;
+
   };
 
   flake.modules.homeManager.hyprland =

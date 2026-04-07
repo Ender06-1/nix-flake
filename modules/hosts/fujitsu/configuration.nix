@@ -113,6 +113,7 @@
 
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILa6CxEhvFFvpusrhmmAvhv8Pt0gm3Zz0SV7w1os1J54"
         ];
       };
 
@@ -152,14 +153,40 @@
 
       age.secrets.caddy.file = ./_secrets/caddy.age;
 
-      systemd.tmpfiles.rules = [
-        "d /opt/dockge 0770 admin users -"
-      ];
-
-      services.caddy.virtualHosts."dockge.tailb1bb3f.ts.net".extraConfig = ''
-        bind tailscale/dockge
+      services.caddy.virtualHosts."homepage.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/homepage
         tailscale_auth
-        reverse_proxy 127.0.0.1:5001
+        reverse_proxy 127.0.0.1:8000
+      '';
+
+      services.caddy.virtualHosts."filebrowser.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/filebrowser
+        tailscale_auth
+        reverse_proxy 127.0.0.1:8001
+      '';
+
+      services.caddy.virtualHosts."fireflyiii.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/fireflyiii
+        tailscale_auth
+        reverse_proxy 127.0.0.1:8002
+      '';
+
+      services.caddy.virtualHosts."nextcloud.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/nextcloud
+        tailscale_auth
+        reverse_proxy 127.0.0.1:8003
+      '';
+
+      services.caddy.virtualHosts."immich.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/immich
+        tailscale_auth
+        reverse_proxy 127.0.0.1:8004
+      '';
+
+      services.caddy.virtualHosts."affine.tailb1bb3f.ts.net".extraConfig = ''
+        bind tailscale/affine
+        tailscale_auth
+        reverse_proxy 127.0.0.1:8005
       '';
 
       system.stateVersion = "25.11";
