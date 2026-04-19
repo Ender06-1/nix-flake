@@ -169,6 +169,12 @@
         enableOnBoot = false;
       };
 
+      virtualisation.libvirtd = {
+        enable = true;
+        qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+      };
+      programs.virt-manager.enable = true;
+
       services = {
         udisks2.enable = true;
         gvfs.enable = true;
@@ -176,6 +182,8 @@
 
       environment.systemPackages = [
         inputs.agenix.packages."x86_64-linux".default
+
+        pkgs.dnsmasq
       ];
 
       system.stateVersion = "25.05";
