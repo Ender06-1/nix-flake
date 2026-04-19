@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 let
-  hostname = "msi";
+  hostname = "framework";
 in
 {
   flake.nixosConfigurations = self.lib.mkNixos "x86_64-linux" hostname;
@@ -13,11 +13,7 @@ in
         with inputs.nixos-hardware.nixosModules;
         [
           (modulesPath + "/installer/scan/not-detected.nix")
-          common-cpu-amd
-          common-cpu-amd-zenpower
-          common-gpu-amd
-          common-pc
-          common-pc-ssd
+          framework-13th-gen-intel
 
           system-hyprland
 
@@ -32,42 +28,37 @@ in
       boot = {
         initrd = {
           availableKernelModules = [
-            "nvme"
             "xhci_pci"
-            "ahci"
-            "usbhid"
+            "thunderbolt"
+            "nvme"
             "usb_storage"
+            "usbhid"
             "sd_mod"
           ];
           kernelModules = [ ];
         };
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
       };
 
       fileSystems = {
         "/" = {
-          device = "/dev/disk/by-uuid/1320bab0-857c-411a-aede-51d8b375d030";
+          device = "/dev/disk/by-uuid/87f36fab-3d52-434f-af4c-ed9f30569981";
           fsType = "ext4";
         };
 
         "/boot" = {
-          device = "/dev/disk/by-uuid/9F9E-2BC7";
+          device = "/dev/disk/by-uuid/E6FF-1223";
           fsType = "vfat";
           options = [
             "fmask=0077"
             "dmask=0077"
           ];
         };
-
-        "/mnt/storage" = {
-          device = "/dev/disk/by-uuid/13ddf8d8-def6-467f-b487-1958633cf951";
-          fsType = "ext4";
-        };
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-uuid/89779217-c066-4c32-99cc-8928b72ba95f"; }
+        { device = "/dev/disk/by-uuid/f1b2f53b-bb38-4073-b750-6fa555de0c64"; }
       ];
 
       console.keyMap = "us";

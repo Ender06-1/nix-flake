@@ -30,6 +30,11 @@
       ];
 
       programs.firefox.enable = true;
+
+      services = {
+        udisks2.enable = true;
+        gvfs.enable = true;
+      };
     };
 
   flake.modules.homeManager.system-desktop =
