@@ -1,39 +1,23 @@
-# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
-# Use `nix run .#write-flake` to regenerate it.
+# DO NOT EDIT: file automatically generated. use `nix run .#write-flake
 {
+  description = "Ender06-1's flake";
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    agenix = {
-      inputs = {
-        darwin.follows = "";
-        nixpkgs.follows = "nixpkgs";
-      };
-      url = "github:ryantm/agenix";
-    };
     caelestia-shell = {
+      url = "github:caelestia-dots/shell?ref=v1.5.2";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:caelestia-dots/shell";
     };
     flake-file.url = "github:vic/flake-file";
-    flake-parts = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
-      url = "github:hercules-ci/flake-parts";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
     };
     import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-lib.follows = "nixpkgs";
-    shells = {
-      flake = false;
-      url = "path:./shells";
-    };
-    systems.url = "github:nix-systems/default";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
-
 }

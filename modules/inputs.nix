@@ -1,28 +1,22 @@
 { inputs, ... }:
 {
+  imports = with inputs; [
+    flake-parts.flakeModules.modules
+    flake-file.flakeModules.default
+    home-manager.flakeModules.home-manager
+  ];
+
   flake-file.inputs = {
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    flake-file.url = "github:vic/flake-file";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        darwin.follows = "";
-      };
     };
   };
-
-  imports = [
-    inputs.home-manager.flakeModules.home-manager
-  ];
 }

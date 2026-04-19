@@ -4,15 +4,42 @@ Personal flake.
 
 ## Dendritic features
 
-- `hyprland` (multi context): hyprland desktop
-- `desktop-apps` (multi context): collection of desktop apps
-- `browser` (home-manager): firefox, chrome and mimeapps.list
-- `neovim` (home-manager): neovim with its config
-- `shell` (home-manager): fish shell with its config
-- `cli-tools` (home-manager): collection of cli tools
-- `tmux` (home-manager): tmux with its config
+### Legend
 
-## TODO
+s: [Simple Aspect](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/Dendritic_Aspects#simple-aspect)
+m: [Multi Context Aspect](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/Dendritic_Aspects#multi-context-aspect)
+i: [Inheritance Aspect](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/Dendritic_Aspects#inheritence-aspect)
+c: [Conditional Aspect](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/Dendritic_Aspects#conditional-aspect)
 
-- move and rename `dendritic.nix` in `nix/` folder
-- reorganize features to make them more abstract
+### Features
+
+- `bat` | s
+- `direnv` | s
+- `discord` | s
+- `eza` | s
+- `fish` | s
+- `games` | m
+- `git` | s
+- `kitty` | s
+- `neovim` | s
+- `obs-studio` | s
+- `ssh` | s
+- `tailscale` | s
+- `tmux` | s
+- `virtualisation` | s
+- `vscode` | s
+- `yazi` | s
+- `zoxdie` | s
+- `flatpak` | s
+
+### Systems
+
+- `system-default` | si
+- `system-desktop` | mi
+- `system-laptop` | si
+- `system-hyprland` | mi
+- `system-hyprland-laptop` | m
+
+## devShells
+
+- `default`: devenv for developping this flake
