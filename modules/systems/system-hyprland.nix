@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     caelestia-shell = {
-      url = "github:caelestia-dots/shell?ref=v1.5.2";
+      url = "github:caelestia-dots/shell?ref=v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
