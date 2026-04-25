@@ -62,5 +62,15 @@ in
       ];
 
       console.keyMap = "us";
+
+      nix.settings = {
+        substituters = [
+          "https://nix-cache.tailb1bb3f.ts.net"
+          "https://cache.nixos.org"
+        ];
+        trusted-public-keys = [
+          "nix-cache.tailb1bb3f.ts.net:ocKHQNVT7Zp35/vArLlGkyD8B6OJ6LbnbdcZUxE7Ues="
+        ];
+      };
     };
 }
