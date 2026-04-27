@@ -12,9 +12,6 @@ in
       modulesPath,
       ...
     }:
-    let
-      system = pkgs.stdenv.hostPlatform.system;
-    in
     {
       imports =
         with inputs;
@@ -36,8 +33,6 @@ in
 
           # Users
           matheo
-
-          agenix.nixosModules.default
         ];
 
       boot = {
@@ -82,33 +77,5 @@ in
       ];
 
       console.keyMap = "us";
-
-      environment.systemPackages = with inputs; [
-        agenix.packages.${system}.default
-      ];
-
-      age = {
-        identityPaths = [ "/home/matheo/.ssh/id_ed25519" ];
-        secrets.caddy.file = ./_secrets/caddy.age;
-      };
-
-      services.nix-serve = {
-        enable = true;
-        secretKeyFile = "/var/cache-priv-key.pem";
-      };
-
-      services.caddy = {
-        enable = true;
-        package = pkgs.caddy.withPlugins {
-          plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac" ];
-          hash = "sha256-Uzl5e3WHrIQxSScgZmBhBq4VNavxU+MHr2nT5xG6XbU=";
-        };
-        environmentFile = config.age.secrets.caddy.path;
-        virtualHosts."nix-cache.tailb1bb3f.ts.net".extraConfig = ''
-          bind tailscale/nix-cache
-          tailscale_auth
-          reverse_proxy http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}
-        '';
-      };
     };
 }
