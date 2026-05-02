@@ -30,6 +30,7 @@ in
           # Specific programs/services
           tailscale
           virtualisation
+          agenix
 
           # Users
           matheo

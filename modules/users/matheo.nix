@@ -42,6 +42,7 @@ in
             obs-studio
             vscode
             discord
+            compose2nix
           ];
 
           programs.git = {

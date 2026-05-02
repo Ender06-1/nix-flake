@@ -21,6 +21,10 @@ in
           (modulesPath + "/installer/scan/not-detected.nix")
 
           system-server
+          caddy
+
+          # services
+          filebrowser
         ];
 
       boot = {
@@ -84,6 +88,10 @@ in
         ];
       };
       services.openssh.settings.AllowUsers = [ "admin" ];
+
+      age.secrets = {
+        caddy.file = ../_secrets/caddy.age;
+      };
 
       console.keyMap = "us";
     };

@@ -5,6 +5,7 @@
       system-default
 
       tailscale
+      agenix
     ];
 
     services.openssh = {

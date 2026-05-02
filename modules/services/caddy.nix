@@ -1,13 +1,7 @@
-{ inputs, ... }:
 {
   flake.modules.nixos.caddy =
     { config, pkgs, ... }:
     {
-      # age = {
-      #   identityPaths = [ "/home/matheo/.ssh/id_ed25519" ];
-      #   secrets.caddy.file = ./_secrets/caddy.age;
-      # };
-
       services.caddy = {
         enable = true;
 
