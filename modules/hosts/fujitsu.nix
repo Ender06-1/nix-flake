@@ -24,6 +24,7 @@ in
           caddy
 
           # services
+          homepage
           filebrowser
         ];
 

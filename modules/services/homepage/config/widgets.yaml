@@ -1,0 +1,13 @@
+---
+
+- resources:
+    label: System
+    cpu: true
+    memory: true
+
+- resources:
+    label: Storage
+    expanded: true
+    disk:
+      - /
+      - /mnt/storage

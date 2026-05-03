@@ -10,11 +10,11 @@ in
         ./_filebrowser_compose.nix
       ];
 
-      services.caddy = {
-        virtualHosts.${hostname}.extraConfig = ''
+      services.caddy.virtualHosts = {
+        ${hostname}.extraConfig = ''
           bind tailscale/${serviceName}
           tailscale_auth
-          reverse_proxy localhost:8000
+          reverse_proxy localhost:8001
         '';
       };
 
@@ -23,4 +23,5 @@ in
         "C /var/lib/${serviceName}/data 0755 admin 1000 - ${./data}"
       ];
     };
+
 }

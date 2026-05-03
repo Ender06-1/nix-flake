@@ -18,7 +18,7 @@
       "/var/lib/filebrowser/data:/home/filebrowser/data:rw"
     ];
     ports = [
-      "127.0.0.1:8000:80/tcp"
+      "127.0.0.1:8001:80/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
