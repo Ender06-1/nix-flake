@@ -55,6 +55,7 @@
         imagemagick
         unzip
         zip
+        neovim
 
         gcc15
         python314
