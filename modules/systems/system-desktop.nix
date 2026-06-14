@@ -22,8 +22,12 @@
         };
       };
 
+      nixpkgs.config.permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
+
       environment.systemPackages = with pkgs; [
-        bitwarden-desktop
+        # bitwarden-desktop
         libreoffice-fresh
         vlc
         google-chrome
@@ -43,7 +47,6 @@
       xdg = {
         enable = true;
         mimeApps = {
-          enable = true;
           defaultApplicationPackages = with pkgs; [
             vlc
             libreoffice-fresh

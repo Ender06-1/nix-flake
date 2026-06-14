@@ -16,6 +16,7 @@ in
             ssh
             games
             flatpak
+            waydroid
           ];
 
           users.users.${username}.extraGroups = [

@@ -25,7 +25,7 @@ in
           common-pc
           common-pc-ssd
 
-          system-hyprland
+          system-kde
 
           # Specific programs/services
           tailscale
