@@ -22,10 +22,6 @@ in
 
           system-server
           caddy
-
-          # services
-          homepage
-          filebrowser
         ];
 
       boot = {

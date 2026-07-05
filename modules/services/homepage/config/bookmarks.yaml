@@ -1,9 +1,0 @@
----
-
-- Links:
-    - Tailscale:
-        - abbr: TS
-          href: https://login.tailscale.com/admin/machines
-    - Homepage documentation:
-        - abbr: HP
-          href: https://gethomepage.dev/configs/
