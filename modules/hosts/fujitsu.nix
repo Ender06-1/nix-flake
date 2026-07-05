@@ -20,7 +20,9 @@ in
         [
           (modulesPath + "/installer/scan/not-detected.nix")
 
-          system-server
+          # Roles
+          server
+
           caddy
         ];
 

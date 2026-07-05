@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.nixos.system-server = {
+  flake.modules.nixos.server = {
     imports = with self.modules.nixos; [
       base
 

@@ -25,7 +25,8 @@ in
           common-pc
           common-pc-ssd
 
-          system-kde
+          # Roles
+          kde
 
           # Specific programs/services
           tailscale

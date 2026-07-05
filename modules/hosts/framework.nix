@@ -15,8 +15,9 @@ in
           (modulesPath + "/installer/scan/not-detected.nix")
           framework-13th-gen-intel
 
-          # Role
+          # Roles
           hyprland
+          laptop
 
           # Specific programs/services
           tailscale

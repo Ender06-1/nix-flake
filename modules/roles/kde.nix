@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.nixos.system-kde = { pkgs, ... }: {
+  flake.modules.nixos.kde = { pkgs, ... }: {
     imports = with self.modules.nixos; [
       desktop
     ];
