@@ -1,6 +1,6 @@
 { self, lib, ... }:
 let
-  username = "matheo";
+  username = "admin";
 in
 {
   flake.homeConfigurations = self.lib.mkHomeManager "x86_64-linux" username;
@@ -14,17 +14,19 @@ in
         {
           imports = with self.modules.nixos; [
             ssh
-            games
-            flatpak
-            waydroid
             docker
           ];
 
-          users.users.${username}.extraGroups = [
-            "docker"
-            "kvm"
-            "libvirtd"
-          ];
+          users.users.${username} = {
+            extraGroups = [
+              "docker"
+            ];
+            openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
+            ];
+          };
+
+          services.openssh.settings.AllowUsers = [ "admin" ];
         };
 
       homeManager.${username} =
@@ -33,26 +35,12 @@ in
           imports = with self.modules.homeManager; [
             bat
             eza
-            git
             yazi
             zoxide
             fish
             neovim
             tmux
-            direnv
-            kitty
-            obs-studio
-            vscode
-            discord
-            compose2nix
           ];
-
-          programs.git = {
-            settings.user = {
-              name = "Mathéba";
-              email = "ndxendernight@gmail.com";
-            };
-          };
 
           xdg = {
             configFile = {

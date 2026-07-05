@@ -1,12 +1,7 @@
 {
-  flake.modules.nixos.virtualisation =
+  flake.modules.nixos.virt-manager =
     { pkgs, ... }:
     {
-      virtualisation.docker = {
-        enable = true;
-        enableOnBoot = false;
-      };
-
       virtualisation.libvirtd = {
         enable = true;
         qemu.vhostUserPackages = with pkgs; [ virtiofsd ];

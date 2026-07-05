@@ -4,6 +4,7 @@
     imports = with self.modules.nixos; [
       base
 
+      caddy
       tailscale
       agenix
     ];

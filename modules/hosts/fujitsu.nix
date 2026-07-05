@@ -23,7 +23,8 @@ in
           # Roles
           server
 
-          caddy
+          # Users
+          admin
         ];
 
       boot = {
@@ -75,23 +76,10 @@ in
         { device = "/dev/disk/by-uuid/7458e041-e94f-463a-97ab-2dd9cbdfc961"; }
       ];
 
-      users.users."admin" = {
-        isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "docker"
-        ];
-
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
-        ];
-      };
-      services.openssh.settings.AllowUsers = [ "admin" ];
+      console.keyMap = "us";
 
       age.secrets = {
         caddy.file = ../_secrets/caddy.age;
       };
-
-      console.keyMap = "us";
     };
 }
