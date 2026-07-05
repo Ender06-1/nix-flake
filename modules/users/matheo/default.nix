@@ -52,6 +52,21 @@ in
               email = "ndxendernight@gmail.com";
             };
           };
+
+          xdg = {
+            configFile = {
+              "nvim" = {
+                source = ./dotfiles/nvim;
+                recursive = true;
+              };
+              "fish" = {
+                source = ./dotfiles/fish;
+                recursive = true;
+              };
+              "starship.toml".source = ./dotfiles/starship.toml;
+            };
+            mimeApps.defaultApplicationPackages = [ pkgs.neovim-unwrapped ];
+          };
         };
     }
   ];

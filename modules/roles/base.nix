@@ -1,10 +1,14 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
-  flake.modules.nixos.system-default =
+  flake.modules.nixos.base =
     { pkgs, ... }:
     {
       imports = with inputs; [
         home-manager.nixosModules.home-manager
+      ];
+
+      home-manager.sharedModules = with self.modules.homeManager; [
+        base
       ];
 
       boot.loader = {
@@ -47,20 +51,21 @@
         btop
         fastfetch
         wget
-        file
-        ffmpeg
-        p7zip
-        jq
-        resvg
-        imagemagick
-        unzip
         zip
+        unzip
         neovim
 
-        gcc15
+        gcc16
         python314
       ];
 
       system.stateVersion = "25.05";
     };
+
+  flake.modules.homeManager.base = {
+    xdg = {
+      userDirs.setSessionVariables = false;
+      enable = true;
+    };
+  };
 }

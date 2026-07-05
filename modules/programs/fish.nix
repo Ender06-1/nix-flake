@@ -31,19 +31,5 @@
         '';
       };
 
-      xdg = {
-        enable = true;
-        configFile = {
-          "fish/conf.d" = {
-            source = ./config/fish/conf.d;
-            recursive = true;
-          };
-          "fish/functions" = {
-            source = ./config/fish/functions;
-            recursive = true;
-          };
-          "starship.toml".source = ./config/starship.toml;
-        };
-      };
     };
 }

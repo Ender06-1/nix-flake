@@ -1,14 +1,14 @@
 { self, ... }:
 {
-  flake.modules.nixos.system-desktop =
+  flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
       imports = with self.modules.nixos; [
-        system-default
+        base
       ];
 
       home-manager.sharedModules = with self.modules.homeManager; [
-        system-desktop
+        desktop
       ];
 
       hardware.graphics.enable = true;
@@ -21,10 +21,6 @@
           };
         };
       };
-
-      nixpkgs.config.permittedInsecurePackages = [
-        "electron-39.8.10"
-      ];
 
       environment.systemPackages = with pkgs; [
         # bitwarden-desktop
@@ -41,7 +37,7 @@
       };
     };
 
-  flake.modules.homeManager.system-desktop =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       xdg = {

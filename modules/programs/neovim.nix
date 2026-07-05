@@ -41,17 +41,5 @@
         wl-clipboard
       ];
 
-      xdg = {
-        enable = true;
-        configFile = {
-          "nvim" = {
-            source = ./config/nvim;
-            recursive = true;
-          };
-        };
-        mimeApps = {
-          defaultApplicationPackages = [ pkgs.neovim-unwrapped ];
-        };
-      };
     };
 }

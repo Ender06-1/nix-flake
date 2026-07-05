@@ -15,7 +15,8 @@ in
           (modulesPath + "/installer/scan/not-detected.nix")
           framework-13th-gen-intel
 
-          system-hyprland
+          # Role
+          hyprland
 
           # Specific programs/services
           tailscale
@@ -24,6 +25,10 @@ in
           # Users
           matheo
         ];
+
+      home-manager.sharedModules = with self.modules.homeManager; [
+        framework
+      ];
 
       boot = {
         initrd = {
@@ -63,4 +68,8 @@ in
 
       console.keyMap = "us";
     };
+
+  flake.modules.homeManager.${hostname} = { lib, ... }: {
+    programs.caelestia.settings.bar.status.showBattery = lib.mkForce true;
+  };
 }

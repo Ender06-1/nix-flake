@@ -7,13 +7,13 @@
     };
   };
 
-  flake.modules.nixos.system-hyprland = {
+  flake.modules.nixos.hyprland = { pkgs, ... }: {
     imports = with self.modules.nixos; [
-      system-desktop
+      desktop
     ];
 
     home-manager.sharedModules = with self.modules.homeManager; [
-      system-hyprland
+      hyprland
     ];
 
     programs.hyprland.enable = true;
@@ -32,9 +32,42 @@
     };
 
     security.polkit.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      hyprpaper
+      hyprpicker
+      hyprpolkitagent
+      hyprsysteminfo
+      app2unit
+      cliphist
+      inotify-tools
+      libnotify
+      brightnessctl
+      pavucontrol
+      playerctl
+      papirus-icon-theme
+      kdePackages.qt6ct
+      kdePackages.qtsvg
+      kdePackages.qtimageformats
+      kdePackages.qtmultimedia
+      kdePackages.qt5compat
+      nwg-look
+      adw-gtk3
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
+
+      poppler
+      file-roller
+      loupe
+      nautilus
+      papers
+    ];
   };
 
-  flake.modules.homeManager.system-hyprland =
+  flake.modules.homeManager.hyprland =
     { pkgs, lib, ... }:
     {
       imports = with inputs; [
@@ -76,13 +109,12 @@
       fonts.fontconfig.enable = true;
 
       xdg = {
-        enable = true;
         userDirs = {
           enable = true;
           createDirectories = true;
         };
         configFile."hypr" = {
-          source = ./configs/hyprland/hypr;
+          source = ./dotfiles/hypr;
           recursive = true;
         };
         mimeApps = {
@@ -96,38 +128,5 @@
           ];
         };
       };
-
-      home.packages = with pkgs; [
-        hyprpaper
-        hyprpicker
-        hyprpolkitagent
-        hyprsysteminfo
-        app2unit
-        cliphist
-        inotify-tools
-        libnotify
-        brightnessctl
-        pavucontrol
-        playerctl
-        papirus-icon-theme
-        kdePackages.qt6ct
-        kdePackages.qtsvg
-        kdePackages.qtimageformats
-        kdePackages.qtmultimedia
-        kdePackages.qt5compat
-        nwg-look
-        adw-gtk3
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-color-emoji
-        nerd-fonts.jetbrains-mono
-        nerd-fonts.fira-code
-
-        poppler
-        file-roller
-        loupe
-        nautilus
-        papers
-      ];
     };
 }

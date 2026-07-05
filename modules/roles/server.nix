@@ -2,7 +2,7 @@
 {
   flake.modules.nixos.system-server = {
     imports = with self.modules.nixos; [
-      system-default
+      base
 
       tailscale
       agenix

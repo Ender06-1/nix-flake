@@ -1,7 +1,7 @@
 { self, ... }: {
-  flake.modules.nixos.system-laptop = {
+  flake.modules.nixos.laptop = {
     imports = with self.modules.nixos; [
-      system-desktop
+      desktop
     ];
 
     services = {
