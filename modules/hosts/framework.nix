@@ -21,7 +21,6 @@ in
 
           # Specific programs/services
           tailscale
-          virtualisation
 
           # Users
           matheo

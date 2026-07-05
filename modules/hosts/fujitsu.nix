@@ -25,6 +25,9 @@ in
 
           # Users
           admin
+
+          # Services
+          filebrowser
         ];
 
       boot = {
@@ -78,8 +81,5 @@ in
 
       console.keyMap = "us";
 
-      age.secrets = {
-        caddy.file = ../_secrets/caddy.age;
-      };
     };
 }

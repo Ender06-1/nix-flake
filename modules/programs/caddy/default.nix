@@ -2,6 +2,10 @@
   flake.modules.nixos.caddy =
     { config, pkgs, ... }:
     {
+      age.secrets = {
+        caddy.file = ./_secrets/caddy.age;
+      };
+
       services.caddy = {
         enable = true;
 
