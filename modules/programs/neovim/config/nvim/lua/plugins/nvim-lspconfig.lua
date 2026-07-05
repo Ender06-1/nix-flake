@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 return {
   'neovim/nvim-lspconfig',
   dependencies = { 'saghen/blink.cmp' },
@@ -23,11 +25,14 @@ return {
 
     vim.diagnostic.config {
       severity_sort = true,
-      float = { border = true },
       underline = { severity = vim.diagnostic.severity.ERROR },
       virtual_text = {
         spacing = 4,
       },
     }
+
+    map('n', '<leader>rn', vim.lsp.buf.rename)
+    map('n', 'gd', vim.lsp.buf.definition)
+    map('n', '<leader>ca', vim.lsp.buf.code_action)
   end,
 }
