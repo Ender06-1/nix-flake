@@ -35,12 +35,22 @@ in
           imports = with self.modules.homeManager; [
             bat
             eza
+            git
             yazi
             zoxide
             fish
             neovim
             tmux
+            direnv
+            compose2nix
           ];
+
+          programs.git = {
+            settings.user = {
+              name = "Admin";
+              email = "ndxendernight@gmail.com";
+            };
+          };
 
           xdg = {
             configFile = {
