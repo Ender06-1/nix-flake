@@ -13,7 +13,15 @@
       terminal = "tmux-256color";
 
       plugins = with pkgs.tmuxPlugins; [
-        onedark-theme
+        {
+          plugin = onedark-theme.overrideAttrs (old: {
+            postInstall =
+              (old.postInstall or "")
+              + ''
+                sed -i '1s|#!/bin/bash|#!/usr/bin/env bash|' $out/share/tmux-plugins/onedark-theme/tmux-onedark-theme.tmux
+              '';
+            });
+        }
       ];
     };
   };
