@@ -34,15 +34,16 @@ in
         {
           imports = with self.modules.homeManager; [
             bat
+            compose2nix
+            direnv
             eza
+            fish
             git
+            neovim
+            restic
+            tmux
             yazi
             zoxide
-            fish
-            neovim
-            tmux
-            direnv
-            compose2nix
           ];
 
           programs.git = {
