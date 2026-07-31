@@ -26,7 +26,7 @@ in
           common-pc-ssd
 
           # Roles
-          kde
+          hyprland
 
           # Specific programs/services
           tailscale
