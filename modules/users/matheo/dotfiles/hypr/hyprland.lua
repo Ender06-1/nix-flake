@@ -41,11 +41,6 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 
------------------------
----- LOOK AND FEEL ----
------------------------
-
--- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
   general = {
     gaps_in = 5,
@@ -300,7 +295,11 @@ hl.workspace_rule({
   gaps_out = 20,
 })
 
-hl.bind("SUPER + SUPER_L", hl.dsp.global("caelestia:session"))
+----------------
+--- BINDINGS ---
+----------------
+
+hl.bind("SUPER + SUPER_L", hl.dsp.global("caelestia:launcher"))
 hl.bind(
   "XF86AudioRaiseVolume",
   hl.dsp.exec_cmd(
@@ -327,3 +326,40 @@ hl.bind("SUPER + 6", hl.dsp.focus({ workspace = 6, follow = true }))
 hl.bind("SUPER + 7", hl.dsp.focus({ workspace = 7, follow = true }))
 hl.bind("SUPER + 8", hl.dsp.focus({ workspace = 8, follow = true }))
 hl.bind("SUPER + 9", hl.dsp.focus({ workspace = 9, follow = true }))
+
+hl.bind(
+  "SUPER + SHIFT + 1",
+  hl.dsp.window.move({ workspace = 1, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 2",
+  hl.dsp.window.move({ workspace = 2, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 3",
+  hl.dsp.window.move({ workspace = 3, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 4",
+  hl.dsp.window.move({ workspace = 4, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 5",
+  hl.dsp.window.move({ workspace = 5, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 6",
+  hl.dsp.window.move({ workspace = 6, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 7",
+  hl.dsp.window.move({ workspace = 7, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 8",
+  hl.dsp.window.move({ workspace = 8, follow = true })
+)
+hl.bind(
+  "SUPER + SHIFT + 9",
+  hl.dsp.window.move({ workspace = 9, follow = true })
+)

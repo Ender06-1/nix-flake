@@ -13,7 +13,7 @@
       };
     };
     caelestia-shell = {
-      url = "github:caelestia-dots/shell?ref=v2.2.0";
+      url = "github:caelestia-dots/shell?ref=v2.3.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     flake-file.url = "github:vic/flake-file";

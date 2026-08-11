@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     caelestia-shell = {
-      url = "github:caelestia-dots/shell?ref=v2.2.0";
+      url = "github:caelestia-dots/shell?ref=v2.3.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
@@ -74,6 +74,11 @@
         caelestia-shell.homeManagerModules.default
       ];
 
+      # wayland.windowManager.hyprland = {
+      #   enable = true;
+      #   configType = "lua";
+      # };
+
       programs.caelestia = {
         enable = true;
         systemd.enable = false;
@@ -112,10 +117,6 @@
         userDirs = {
           enable = true;
           createDirectories = true;
-        };
-        configFile."hypr" = {
-          source = ./dotfiles/hypr;
-          recursive = true;
         };
         mimeApps = {
           enable = true;

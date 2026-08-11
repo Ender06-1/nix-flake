@@ -1,4 +1,8 @@
-{ self, lib, ... }:
+{
+  self,
+  lib,
+  ...
+}:
 let
   username = "matheo";
 in
@@ -28,7 +32,12 @@ in
         };
 
       homeManager.${username} =
-        { pkgs, ... }:
+        { config, pkgs, ... }:
+        let
+          mkConfigSym =
+            fileName:
+            config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-flake/modules/users/${username}/dotfiles/${fileName}";
+        in
         {
           imports = with self.modules.homeManager; [
             bat
@@ -56,18 +65,16 @@ in
 
           xdg = {
             configFile = {
-              "nvim" = {
-                source = ./dotfiles/nvim;
-                recursive = true;
-              };
-              "fish" = {
-                source = ./dotfiles/fish;
-                recursive = true;
-              };
-              "starship.toml".source = ./dotfiles/starship.toml;
+              "fish/conf.d/colors.fish".source = mkConfigSym "fish/conf.d/colors.fish";
+              "fish/functions/ltg".source = mkConfigSym "fish/functions/ltg.fish";
+              "hypr".source = mkConfigSym "hypr";
+              "nvim".source = mkConfigSym "nvim";
+              "starship.toml".source = mkConfigSym "starship.toml";
             };
             mimeApps.defaultApplicationPackages = [ pkgs.neovim-unwrapped ];
           };
+
+          programs.neovim.sideloadInitLua = true;
         };
     }
   ];
