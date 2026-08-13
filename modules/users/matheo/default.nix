@@ -34,9 +34,7 @@ in
       homeManager.${username} =
         { config, pkgs, ... }:
         let
-          mkConfigSym =
-            fileName:
-            config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-flake/modules/users/${username}/dotfiles/${fileName}";
+          mkConfigSym = configName: config.lib.my.mkConfigSym "users/${username}/dotfiles/${configName}";
         in
         {
           imports = with self.modules.homeManager; [
@@ -63,16 +61,10 @@ in
             };
           };
 
-          xdg = {
-            configFile = {
-              "hypr".source = mkConfigSym "hypr";
-              "nvim".source = mkConfigSym "nvim";
-              "starship.toml".source = mkConfigSym "starship.toml";
-            };
-            mimeApps.defaultApplicationPackages = [ pkgs.neovim-unwrapped ];
+          xdg.configFile = {
+            "hypr".source = mkConfigSym "hypr";
+            "starship.toml".source = mkConfigSym "starship.toml";
           };
-
-          programs.neovim.sideloadInitLua = true;
         };
     }
   ];

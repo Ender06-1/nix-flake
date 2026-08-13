@@ -62,10 +62,16 @@
       system.stateVersion = "25.05";
     };
 
-  flake.modules.homeManager.base = {
-    xdg = {
-      userDirs.setSessionVariables = false;
-      enable = true;
+  flake.modules.homeManager.base =
+    { config, ... }:
+    {
+      lib.my.mkConfigSym =
+        configPath:
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-flake/modules/${configPath}";
+
+      xdg = {
+        userDirs.setSessionVariables = false;
+        enable = true;
+      };
     };
-  };
 }

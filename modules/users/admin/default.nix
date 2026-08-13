@@ -30,7 +30,10 @@ in
         };
 
       homeManager.${username} =
-        { pkgs, ... }:
+        { config, pkgs, ... }:
+        let
+          mkConfigSym = configName: config.lib.my.mkConfigSym "users/${username}/dotfiles/${configName}";
+        in
         {
           imports = with self.modules.homeManager; [
             bat
@@ -55,17 +58,8 @@ in
 
           xdg = {
             configFile = {
-              "nvim" = {
-                source = ./dotfiles/nvim;
-                recursive = true;
-              };
-              "fish" = {
-                source = ./dotfiles/fish;
-                recursive = true;
-              };
-              "starship.toml".source = ./dotfiles/starship.toml;
+              "starship.toml".source = mkConfigSym "starship.toml";
             };
-            mimeApps.defaultApplicationPackages = [ pkgs.neovim-unwrapped ];
           };
         };
     }
