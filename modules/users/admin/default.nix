@@ -31,9 +31,6 @@ in
 
       homeManager.${username} =
         { config, pkgs, ... }:
-        let
-          mkConfigSym = configName: config.lib.my.mkConfigSym "users/${username}/dotfiles/${configName}";
-        in
         {
           imports = with self.modules.homeManager; [
             bat
@@ -56,11 +53,6 @@ in
             };
           };
 
-          xdg = {
-            configFile = {
-              "starship.toml".source = mkConfigSym "starship.toml";
-            };
-          };
         };
     }
   ];

@@ -40,11 +40,7 @@
         };
       };
 
-      programs.starship = {
-        enable = true;
-        enableTransience = true;
-        enableBashIntegration = false;
-      };
+      programs.starship.enableBashIntegration = false;
 
       programs.bash = {
         enable = true;

@@ -63,7 +63,6 @@ in
 
           xdg.configFile = {
             "hypr".source = mkConfigSym "hypr";
-            "starship.toml".source = mkConfigSym "starship.toml";
           };
         };
     }
