@@ -28,6 +28,7 @@ in
 
           # Services
           filebrowser
+          immich
         ];
 
       boot = {

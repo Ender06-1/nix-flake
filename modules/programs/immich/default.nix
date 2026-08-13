@@ -1,25 +1,25 @@
 let
-  serviceName = "filebrowser";
+  serviceName = "immich";
   hostname = "${serviceName}.tailb1bb3f.ts.net";
 in
 {
-  flake.modules.nixos.filebrowser = {
+  flake.modules.nixos.immich = {
     imports = [
       ./_compose.nix
     ];
 
-    filebrowser.enable = true;
+    immich.enable = true;
+
+    age.secrets.immich.file = ./_secrets/immich.age;
 
     services.caddy.virtualHosts.${hostname}.extraConfig = ''
       bind tailscale/${serviceName}
       tailscale_auth
-      reverse_proxy localhost:8000
+      reverse_proxy localhost:8001
     '';
 
     systemd.tmpfiles.rules = [
       "d /var/stacks/${serviceName} 0755 admin users -"
-      "C /var/stacks/${serviceName}/data 0755 admin users - ${./data}"
     ];
   };
-
 }
