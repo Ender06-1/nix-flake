@@ -96,7 +96,20 @@
             useFahrenheit = false;
             useTwelveHourClock = false;
           };
-          bar.status.showBattery = lib.mkDefault false;
+          bar.statusIcons = [
+            {
+              id = "audio";
+              enabled = true;
+            }
+            {
+              id = "network";
+              enabled = true;
+            }
+            {
+              id = "bluetooth";
+              enabled = true;
+            }
+          ];
         };
       };
 

@@ -65,8 +65,6 @@ in
 
           xdg = {
             configFile = {
-              "fish/conf.d/colors.fish".source = mkConfigSym "fish/conf.d/colors.fish";
-              "fish/functions/ltg".source = mkConfigSym "fish/functions/ltg.fish";
               "hypr".source = mkConfigSym "hypr";
               "nvim".source = mkConfigSym "nvim";
               "starship.toml".source = mkConfigSym "starship.toml";
