@@ -44,6 +44,7 @@ in
             yazi
             zoxide
             fish
+            starship
             neovim
             tmux
             direnv

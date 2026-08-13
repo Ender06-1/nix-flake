@@ -38,6 +38,7 @@ in
             direnv
             eza
             fish
+            starship
             git
             neovim
             restic

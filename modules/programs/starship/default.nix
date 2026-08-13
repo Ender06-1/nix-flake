@@ -5,6 +5,6 @@
       enableTransience = true;
     };
 
-    xdg.configFile."starship.toml" = config.lib.my.mkConfigSym "programs/starship/starship.toml";
+    xdg.configFile."starship.toml".source = config.lib.my.mkConfigSym "programs/starship/starship.toml";
   };
 }
