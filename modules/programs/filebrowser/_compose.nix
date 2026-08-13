@@ -17,7 +17,7 @@
 
     # Containers
     virtualisation.oci-containers.containers."filebrowser-server" = {
-      image = "gtstef/filebrowser:stable";
+      image = "gtstef/filebrowser:1.5-stable";
       volumes = [
         "/mnt/storage:/mnt/storage:rw"
         "/var/stacks/filebrowser/data:/home/filebrowser/data:rw"

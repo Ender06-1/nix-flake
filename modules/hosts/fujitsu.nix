@@ -80,6 +80,5 @@ in
       ];
 
       console.keyMap = "us";
-
     };
 }

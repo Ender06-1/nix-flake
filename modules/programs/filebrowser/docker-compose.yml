@@ -1,0 +1,12 @@
+# compose2nix -enable_option -output _compose.nix -root_path /var/stacks/filebrowser -runtime docker
+name: filebrowser
+
+services:
+  server:
+    image: gtstef/filebrowser:1.5-stable
+    volumes:
+      - /mnt/storage:/mnt/storage
+      - ./data:/home/filebrowser/data
+    ports:
+      - 127.0.0.1:8000:80
+    restart: unless-stopped
