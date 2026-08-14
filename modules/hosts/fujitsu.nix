@@ -29,6 +29,7 @@ in
           # Services
           filebrowser
           immich
+          vikunja
         ];
 
       boot = {

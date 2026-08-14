@@ -1,0 +1,15 @@
+name: vikunja
+
+services:
+  server:
+    image: vikunja/vikunja:2.5.0
+    environment:
+      VIKUNJA_SERVICE_PUBLICURL: https://vikunja.tailb1bb3f.ts.net/
+      VIKUNJA_SERVICE_SECRET: d45985fc54c7a14a8132c2bf22b91dfb7455cd594fe62152841bca1009c5b68e
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+    ports:
+      - 127.0.0.1:8002:3456
+    volumes:
+      - /mnt/storage/vikunja/files:/app/vikunja/files
+      - /mnt/storage/vikunja/db:/db
+    restart: unless-stopped
