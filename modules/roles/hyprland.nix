@@ -98,6 +98,10 @@
           };
           bar.statusIcons = [
             {
+              id = "lockStatus";
+              enabled = true;
+            }
+            {
               id = "audio";
               enabled = true;
             }

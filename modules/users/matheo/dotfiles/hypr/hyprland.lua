@@ -43,8 +43,8 @@ hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 
 hl.config({
   general = {
-    gaps_in = 5,
-    gaps_out = 20,
+    gaps_in = 2,
+    gaps_out = 5,
     border_size = 2,
 
     col = {
@@ -331,6 +331,41 @@ hl.bind(
   hl.dsp.window.move({ workspace = 9, follow = true })
 )
 
-hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close())
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
+hl.bind("SUPER + SHIFT + F", hl.dsp.window.float())
+
+hl.bind("SUPER + P", hl.dsp.global("caelestia:lock"))
+hl.bind(
+  "SUPER + SHIFT + P",
+  hl.dsp.exec_cmd("systemctl suspend-then-hibernate"),
+  { locked = true }
+)
+
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(
+  "XF86AudioPlay",
+  hl.dsp.global("caelestia:mediaToggle"),
+  { locked = true }
+)
+hl.bind(
+  "XF86AudioNext",
+  hl.dsp.global("caelestia:mediaNext"),
+  { locked = true }
+)
+hl.bind(
+  "XF86AudioPrev",
+  hl.dsp.global("caelestia:mediaPrev"),
+  { locked = true }
+)
+hl.bind(
+  "XF86AudioStop",
+  hl.dsp.global("caelestia:mediaStop"),
+  { locked = true }
+)
+
+hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
+hl.bind("SUPER + I", hl.dsp.exec_cmd("firefox"))
+hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
