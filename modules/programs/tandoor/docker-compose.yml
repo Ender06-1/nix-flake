@@ -1,0 +1,22 @@
+name: tandoor
+
+services:
+  db_recipes:
+    restart: always
+    image: postgres:16-alpine
+    volumes:
+      - /mnt/storage/tandoor/postgresql:/var/lib/postgresql/data
+
+  web_recipes:
+    restart: always
+    image: vabene1111/recipes
+    ports:
+      - 127.0.0.1:8003:80
+    volumes:
+      - staticfiles:/opt/recipes/staticfiles
+      - /mnt/storage/tandoor/mediafiles:/opt/recipes/mediafiles
+    depends_on:
+      - db_recipes
+
+volumes:
+  staticfiles:

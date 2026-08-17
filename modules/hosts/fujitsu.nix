@@ -30,6 +30,7 @@ in
           filebrowser
           immich
           vikunja
+          tandoor
         ];
 
       boot = {
