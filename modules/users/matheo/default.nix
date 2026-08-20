@@ -53,6 +53,7 @@ in
             vscode
             discord
             compose2nix
+            sqlitebrowser
           ];
 
           programs.git = {

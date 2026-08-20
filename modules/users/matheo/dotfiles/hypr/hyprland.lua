@@ -271,13 +271,15 @@ hl.bind(
   "XF86AudioRaiseVolume",
   hl.dsp.exec_cmd(
     "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-  )
+  ),
+  { repeating = true }
 )
 hl.bind(
   "XF86AudioLowerVolume",
   hl.dsp.exec_cmd(
     "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-  )
+  ),
+  { repeating = true }
 )
 hl.bind("SUPER + H", hl.dsp.focus({ direction = "l" }))
 hl.bind("SUPER + L", hl.dsp.focus({ direction = "r" }))
