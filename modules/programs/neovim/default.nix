@@ -23,6 +23,7 @@
         extraPackages = with pkgs; [
           curl
           git
+	  tree-sitter
 
           gcc
           lua

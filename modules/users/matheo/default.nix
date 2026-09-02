@@ -17,11 +17,11 @@ in
         { pkgs, ... }:
         {
           imports = with self.modules.nixos; [
-            ssh
-            games
-            flatpak
-            waydroid
             docker
+            flatpak
+            games
+            ssh
+            waydroid
           ];
 
           users.users.${username}.extraGroups = [
@@ -39,21 +39,22 @@ in
         {
           imports = with self.modules.homeManager; [
             bat
+            compose2nix
+            direnv
+            discord
             eza
+            fish
             git
+            kitty
+            kolourpaint
+            neovim
+            obs-studio
+            sqlitebrowser
+            starship
+            tmux
+            vscode
             yazi
             zoxide
-            fish
-            starship
-            neovim
-            tmux
-            direnv
-            kitty
-            obs-studio
-            vscode
-            discord
-            compose2nix
-            sqlitebrowser
           ];
 
           programs.git = {

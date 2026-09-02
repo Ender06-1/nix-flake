@@ -1,2 +1,6 @@
-vim.keymap.set('n', 'j', 'gj', { silent = true })
-vim.keymap.set('n', 'k', 'gk', { silent = true })
+local map = vim.keymap.set
+
+map("i", "jk", "<ESC>")
+
+map({ "n", "v" }, "j", "gj")
+map({ "n", "v" }, "k", "gk")
