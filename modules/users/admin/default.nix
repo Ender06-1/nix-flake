@@ -45,6 +45,7 @@ in
             tmux
             yazi
             zoxide
+            immich-go
           ];
 
           programs.git = {
