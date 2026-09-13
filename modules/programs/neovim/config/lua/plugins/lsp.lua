@@ -7,6 +7,7 @@ return {
         clangd = {},
         nil_ls = {},
         ocamllsp = {},
+        tsc = {},
       },
     },
     config = function(_, opts)

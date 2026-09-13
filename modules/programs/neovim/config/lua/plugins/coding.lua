@@ -9,6 +9,15 @@ return {
         "c",
         "nix",
         "ocaml",
+        "java",
+        "javadoc",
+        "html",
+        "css",
+        "printf",
+        "comment",
+        "javascript",
+        "typescript",
+        "tsx",
       }
 
       require("nvim-treesitter").install(languages)
