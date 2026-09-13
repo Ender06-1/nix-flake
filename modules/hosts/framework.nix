@@ -70,6 +70,27 @@ in
     };
 
   flake.modules.homeManager.${hostname} = { lib, ... }: {
-    programs.caelestia.settings.bar.status.showBattery = lib.mkForce true;
+    programs.caelestia.settings.bar.statusIcons = lib.mkForce [
+      {
+        id = "lockStatus";
+        enabled = true;
+      }
+      {
+        id = "audio";
+        enabled = true;
+      }
+      {
+        id = "network";
+        enabled = true;
+      }
+      {
+        id = "bluetooth";
+        enabled = true;
+      }
+      {
+        id = "battery";
+        enabled = true;
+      }
+    ];
   };
 }
