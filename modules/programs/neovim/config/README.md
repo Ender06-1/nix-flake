@@ -2,11 +2,8 @@
 
 ## TODO
 
-- completion
 - inline diagnostics
 - trouble
-- bufferline
-- telescope
 - lualine
 - flash nvim
 - inlay hints
