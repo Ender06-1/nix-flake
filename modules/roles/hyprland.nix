@@ -17,7 +17,6 @@
     ];
 
     programs.hyprland.enable = true;
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     services.displayManager.ly = {
       enable = true;
       x11Support = false;
@@ -25,13 +24,6 @@
         session_log = ".local/state/ly-session.log";
       };
     };
-
-    services.pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-
-    security.polkit.enable = true;
 
     environment.systemPackages = with pkgs; [
       hyprpaper
@@ -128,23 +120,12 @@
         hyprcursor.enable = true;
       };
 
-      fonts.fontconfig.enable = true;
-
-      xdg = {
-        userDirs = {
-          enable = true;
-          createDirectories = true;
-        };
-        mimeApps = {
-          enable = true;
-          defaultApplicationPackages = with pkgs; [
-            poppler
-            file-roller
-            loupe
-            nautilus
-            papers
-          ];
-        };
-      };
+      xdg.mimeApps.defaultApplicationPackages = with pkgs; [
+        poppler
+        file-roller
+        loupe
+        nautilus
+        papers
+      ];
     };
 }

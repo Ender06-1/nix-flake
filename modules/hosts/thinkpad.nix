@@ -26,7 +26,7 @@ in
           "${hardware}/common/pc/ssd"
 
           # Roles
-          hyprland
+          kde
 
           # Users
           matheo

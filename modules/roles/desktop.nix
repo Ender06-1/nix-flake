@@ -13,6 +13,13 @@
 
       hardware.graphics.enable = true;
 
+      services.pipewire = {
+        enable = true;
+        pulse.enable = true;
+      };
+
+      security.polkit.enable = true;
+
       hardware.bluetooth = {
         enable = true;
         settings = {
@@ -23,7 +30,7 @@
       };
 
       environment.systemPackages = with pkgs; [
-        # bitwarden-desktop
+        bitwarden-desktop
         libreoffice-fresh
         vlc
         google-chrome
@@ -40,9 +47,16 @@
   flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
+      fonts.fontconfig.enable = true;
+
       xdg = {
         enable = true;
+        userDirs = {
+          enable = true;
+          createDirectories = true;
+        };
         mimeApps = {
+          enable = true;
           defaultApplicationPackages = with pkgs; [
             vlc
             libreoffice-fresh
