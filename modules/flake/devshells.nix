@@ -7,6 +7,7 @@
 
         packages = with pkgs; [
           nil
+          nixfmt-tree
           stylua
         ];
       };

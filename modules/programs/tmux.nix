@@ -15,15 +15,12 @@
       plugins = with pkgs.tmuxPlugins; [
         {
           plugin = onedark-theme.overrideAttrs (old: {
-            postInstall =
-              (old.postInstall or "")
-              + ''
-                sed -i '1s|#!/bin/bash|#!/usr/bin/env bash|' $out/share/tmux-plugins/onedark-theme/tmux-onedark-theme.tmux
-              '';
-            });
+            postInstall = (old.postInstall or "") + ''
+              sed -i '1s|#!/bin/bash|#!/usr/bin/env bash|' $out/share/tmux-plugins/onedark-theme/tmux-onedark-theme.tmux
+            '';
+          });
         }
       ];
     };
   };
 }
-
