@@ -1,6 +1,7 @@
 { inputs, self, ... }:
 let
   hostname = "thinkpad";
+  hardware = inputs.nixos-hardware;
 in
 {
   flake.nixosConfigurations = self.lib.mkNixos "x86_64-linux" hostname;
@@ -18,12 +19,11 @@ in
       imports =
         with inputs;
         with self.modules.nixos;
-        with inputs.nixos-hardware.nixosModules;
         [
           (modulesPath + "/installer/scan/not-detected.nix")
-          common-cpu-intel-kaby-lake
-          common-pc-laptop
-          common-pc-ssd
+          "${hardware}/common/cpu/intel/kaby-lake"
+          "${hardware}/common/pc/laptop"
+          "${hardware}/common/pc/ssd"
 
           # Roles
           hyprland
