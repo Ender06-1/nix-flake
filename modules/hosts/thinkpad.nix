@@ -30,6 +30,7 @@ in
 
           # Users
           matheo
+          rumicorne
         ];
 
       boot = {
