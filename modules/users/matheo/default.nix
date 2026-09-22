@@ -66,6 +66,7 @@ in
 
           xdg.configFile = {
             "hypr".source = mkConfigSym "hypr";
+            "caelestia".source = mkConfigSym "caelestia";
           };
         };
     }

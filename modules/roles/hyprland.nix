@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     caelestia-shell = {
-      url = "github:caelestia-dots/shell?ref=v2.4.0";
+      url = "github:caelestia-dots/shell?ref=v2.5.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
@@ -66,47 +66,11 @@
         caelestia-shell.homeManagerModules.default
       ];
 
-      # wayland.windowManager.hyprland = {
-      #   enable = true;
-      #   configType = "lua";
-      # };
-
       programs.caelestia = {
         enable = true;
         systemd.enable = false;
 
         cli.enable = true;
-        settings = {
-          general.apps = {
-            terminal = [ "kitty" ];
-            audio = [ "pavucontrol" ];
-            playback = [ "mpv" ];
-            explorer = [ "nautilus" ];
-          };
-          paths.sessionGif = "";
-          services = {
-            useFahrenheit = false;
-            useTwelveHourClock = false;
-          };
-          bar.statusIcons = [
-            {
-              id = "lockStatus";
-              enabled = true;
-            }
-            {
-              id = "audio";
-              enabled = true;
-            }
-            {
-              id = "network";
-              enabled = true;
-            }
-            {
-              id = "bluetooth";
-              enabled = true;
-            }
-          ];
-        };
       };
 
       services.mpris-proxy.enable = true;

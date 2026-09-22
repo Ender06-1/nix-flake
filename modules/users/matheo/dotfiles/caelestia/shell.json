@@ -1,0 +1,77 @@
+{
+    "bar": {
+        "clock": {
+            "background": true,
+            "showDate": true,
+            "showSeconds": false
+        },
+        "persistent": true,
+        "scrollActions": {
+            "workspaces": true
+        },
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": true,
+                "id": "audio"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            }
+        ]
+    },
+    "general": {
+        "apps": {
+            "audio": [
+                "pavucontrol"
+            ],
+            "explorer": [
+                "nautilus"
+            ],
+            "playback": [
+                "mpv"
+            ],
+            "terminal": [
+                "kitty"
+            ]
+        }
+    },
+    "notifs": {
+        "openExpanded": false
+    },
+    "paths": {
+        "sessionGif": ""
+    },
+    "services": {
+        "clockFormat": "TwentyFourHour",
+        "useFahrenheit": false,
+        "useTwelveHourClock": false,
+        "weatherUnits": "Celsius"
+    },
+    "utilities": {
+        "vpn": {
+            "enabled": true,
+            "provider": [
+                {
+                    "connectCmd": [
+                    ],
+                    "disconnectCmd": [
+                    ],
+                    "displayName": "Tailscale",
+                    "id": "vpn-mud5na9s-1so8y",
+                    "interface": "tailscale0",
+                    "name": "tailscale"
+                }
+            ],
+            "selectedProvider": "vpn-mud5na9s-1so8y"
+        }
+    }
+}

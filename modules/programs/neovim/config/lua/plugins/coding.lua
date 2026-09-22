@@ -55,6 +55,7 @@ return {
         c = { "clang-format" },
         ocaml = { "ocamlformat" },
         nix = { "treefmt", lsp_format = "fallback" },
+        json = { "prettier" },
       },
       format_on_save = {
         timeout_ms = 500,

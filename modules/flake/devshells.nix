@@ -9,6 +9,7 @@
           nil
           nixfmt-tree
           stylua
+          prettier
         ];
       };
     };
