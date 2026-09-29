@@ -52,6 +52,7 @@
     },
     "services": {
         "clockFormat": "TwentyFourHour",
+        "defaultPlayer": "Mozilla firefox",
         "useFahrenheit": false,
         "useTwelveHourClock": false,
         "weatherUnits": "Celsius"

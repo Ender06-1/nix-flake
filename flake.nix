@@ -7,10 +7,7 @@
   inputs = {
     agenix = {
       url = "github:ryantm/agenix";
-      inputs = {
-        darwin.follows = "";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {
       url = "github:caelestia-dots/shell?ref=v2.5.0";

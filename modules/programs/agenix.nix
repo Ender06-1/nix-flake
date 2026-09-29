@@ -3,10 +3,7 @@
   flake-file.inputs = {
     agenix = {
       url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        darwin.follows = "";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

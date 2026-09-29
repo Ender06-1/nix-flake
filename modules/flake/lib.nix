@@ -4,6 +4,30 @@
   lib,
   ...
 }:
+let
+  mkUser = username: isAdmin: {
+    nixos.${username} = {
+      users.users.${username} = {
+        isNormalUser = true;
+        extraGroups = lib.optional isAdmin "wheel";
+      };
+
+      home-manager.users.${username} = {
+        imports = [
+          self.modules.homeManager.${username}
+        ];
+      };
+    };
+
+    homeManager.${username} = {
+      home = {
+        username = username;
+        homeDirectory = "/home/${username}";
+        stateVersion = "25.05";
+      };
+    };
+  };
+in
 {
   flake.lib = {
     mkNixos = system: name: {
@@ -18,28 +42,9 @@
       };
     };
 
-    mkUser = username: isAdmin: {
-      nixos.${username} = {
-        users.users.${username} = {
-          isNormalUser = true;
-          extraGroups = lib.optional isAdmin "wheel";
-        };
+    mkAdminUser = username: mkUser username true;
 
-        home-manager.users.${username} = {
-          imports = [
-            self.modules.homeManager.${username}
-          ];
-        };
-      };
-
-      homeManager.${username} = {
-        home = {
-          username = username;
-          homeDirectory = "/home/${username}";
-          stateVersion = "25.05";
-        };
-      };
-    };
+    mkSimpleUser = username: mkUser username false;
 
     mkHomeManager = system: username: {
       ${username} = inputs.home-manager.lib.homeManagerConfiguration {

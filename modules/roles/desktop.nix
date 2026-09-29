@@ -29,15 +29,6 @@
         };
       };
 
-      environment.systemPackages = with pkgs; [
-        bitwarden-desktop
-        libreoffice-fresh
-        vlc
-        google-chrome
-      ];
-
-      programs.firefox.enable = true;
-
       services = {
         udisks2.enable = true;
         gvfs.enable = true;
@@ -54,14 +45,6 @@
         userDirs = {
           enable = true;
           createDirectories = true;
-        };
-        mimeApps = {
-          enable = true;
-          defaultApplicationPackages = with pkgs; [
-            vlc
-            libreoffice-fresh
-            firefox
-          ];
         };
       };
     };

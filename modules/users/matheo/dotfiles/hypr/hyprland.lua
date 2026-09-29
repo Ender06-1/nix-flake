@@ -286,6 +286,11 @@ hl.bind("SUPER + L", hl.dsp.focus({ direction = "r" }))
 hl.bind("SUPER + K", hl.dsp.focus({ direction = "u" }))
 hl.bind("SUPER + J", hl.dsp.focus({ direction = "d" }))
 
+hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
+
 hl.bind("SUPER + 1", hl.dsp.focus({ workspace = 1, follow = true }))
 hl.bind("SUPER + 2", hl.dsp.focus({ workspace = 2, follow = true }))
 hl.bind("SUPER + 3", hl.dsp.focus({ workspace = 3, follow = true }))
@@ -340,7 +345,7 @@ hl.bind("SUPER + SHIFT + F", hl.dsp.window.float())
 hl.bind("SUPER + P", hl.dsp.global("caelestia:lock"))
 hl.bind(
   "SUPER + SHIFT + P",
-  hl.dsp.exec_cmd("systemctl suspend-then-hibernate"),
+  hl.dsp.exec_cmd("systemctl suspend"),
   { locked = true }
 )
 

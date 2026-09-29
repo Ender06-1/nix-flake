@@ -6,7 +6,7 @@ in
   flake.homeConfigurations = self.lib.mkHomeManager "x86_64-linux" username;
 
   flake.modules = lib.mkMerge [
-    (self.lib.mkUser username true)
+    (self.lib.mkAdminUser username)
 
     {
       nixos.${username} =

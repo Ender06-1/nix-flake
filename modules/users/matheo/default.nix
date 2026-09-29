@@ -10,7 +10,7 @@ in
   flake.homeConfigurations = self.lib.mkHomeManager "x86_64-linux" username;
 
   flake.modules = lib.mkMerge [
-    (self.lib.mkUser username true)
+    (self.lib.mkAdminUser username)
 
     {
       nixos.${username} =
@@ -19,9 +19,9 @@ in
           imports = with self.modules.nixos; [
             docker
             flatpak
-            games
             ssh
-            waydroid
+
+            steam
           ];
 
           users.users.${username}.extraGroups = [
@@ -55,6 +55,12 @@ in
             vscode
             yazi
             zoxide
+            firefox
+            libreoffice
+            bitwarden-desktop
+            vlc
+
+            minecraft
           ];
 
           programs.git = {
