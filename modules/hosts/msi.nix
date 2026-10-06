@@ -20,7 +20,7 @@ in
         [
           (modulesPath + "/installer/scan/not-detected.nix")
           common-cpu-amd
-          common-cpu-amd-zenpower
+          # common-cpu-amd-zenpower
           common-gpu-amd
           common-pc
           common-pc-ssd

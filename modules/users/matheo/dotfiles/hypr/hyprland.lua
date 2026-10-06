@@ -345,7 +345,7 @@ hl.bind("SUPER + SHIFT + F", hl.dsp.window.float())
 hl.bind("SUPER + P", hl.dsp.global("caelestia:lock"))
 hl.bind(
   "SUPER + SHIFT + P",
-  hl.dsp.exec_cmd("systemctl suspend"),
+  hl.dsp.exec_cmd("systemctl suspend-then-hibernate"),
   { locked = true }
 )
 
