@@ -26,10 +26,6 @@ in
           matheo
         ];
 
-      home-manager.sharedModules = with self.modules.homeManager; [
-        framework
-      ];
-
       boot = {
         initrd = {
           availableKernelModules = [
@@ -68,29 +64,4 @@ in
 
       console.keyMap = "us";
     };
-
-  flake.modules.homeManager.${hostname} = { lib, ... }: {
-    programs.caelestia.settings.bar.statusIcons = lib.mkForce [
-      {
-        id = "lockStatus";
-        enabled = true;
-      }
-      {
-        id = "audio";
-        enabled = true;
-      }
-      {
-        id = "network";
-        enabled = true;
-      }
-      {
-        id = "bluetooth";
-        enabled = true;
-      }
-      {
-        id = "battery";
-        enabled = true;
-      }
-    ];
-  };
 }
