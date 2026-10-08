@@ -26,6 +26,7 @@ in
           common-pc-ssd
 
           # Roles
+          desktop
           hyprland
 
           # Specific programs/services

@@ -1,10 +1,5 @@
-{ self, ... }:
 {
   flake.modules.nixos.kde = { pkgs, ... }: {
-    imports = with self.modules.nixos; [
-      desktop
-    ];
-
     services.desktopManager.plasma6.enable = true;
     services.displayManager.sddm = {
       enable = true;

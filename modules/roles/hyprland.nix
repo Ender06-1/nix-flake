@@ -8,10 +8,6 @@
   };
 
   flake.modules.nixos.hyprland = { pkgs, ... }: {
-    imports = with self.modules.nixos; [
-      desktop
-    ];
-
     home-manager.sharedModules = with self.modules.homeManager; [
       hyprland
     ];
@@ -69,7 +65,7 @@
       programs.caelestia = {
         enable = true;
         systemd.enable = false;
-
+        settings = { };
         cli.enable = true;
       };
 

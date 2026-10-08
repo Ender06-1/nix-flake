@@ -26,6 +26,7 @@ in
           "${hardware}/common/pc/ssd"
 
           # Roles
+          laptop
           kde
 
           # Users

@@ -16,8 +16,8 @@ in
           framework-13th-gen-intel
 
           # Roles
-          hyprland
           laptop
+          hyprland
 
           # Specific programs/services
           tailscale
