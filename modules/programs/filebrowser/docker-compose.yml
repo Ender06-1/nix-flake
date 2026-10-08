@@ -3,7 +3,7 @@ name: filebrowser
 
 services:
   server:
-    image: gtstef/filebrowser:1.5-stable
+    image: gtstef/filebrowser:1.5.8-stable
     volumes:
       - /mnt/storage:/mnt/storage
       - ./data:/home/filebrowser/data
