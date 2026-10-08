@@ -29,8 +29,6 @@ in
           # Services
           filebrowser
           immich
-          vikunja
-          tandoor
         ];
 
       boot = {
