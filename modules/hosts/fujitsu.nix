@@ -27,8 +27,6 @@ in
           admin
 
           # Services
-          filebrowser
-          immich
         ];
 
       boot = {
