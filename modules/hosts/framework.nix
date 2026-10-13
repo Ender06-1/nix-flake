@@ -36,7 +36,8 @@ in
             "usbhid"
             "sd_mod"
           ];
-          kernelModules = [ ];
+          kernelModules = [ "dm-snapshot" ];
+          luks.devices.cryptroot.device = "/dev/disk/by-uuid/815617d8-950b-4eab-8bf5-dd588ff0808b";
         };
         kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
@@ -44,12 +45,12 @@ in
 
       fileSystems = {
         "/" = {
-          device = "/dev/disk/by-uuid/87f36fab-3d52-434f-af4c-ed9f30569981";
+          device = "/dev/mapper/rootvg-root";
           fsType = "ext4";
         };
 
         "/boot" = {
-          device = "/dev/disk/by-uuid/E6FF-1223";
+          device = "/dev/disk/by-uuid/5879-E087";
           fsType = "vfat";
           options = [
             "fmask=0077"
@@ -59,7 +60,7 @@ in
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-uuid/f1b2f53b-bb38-4073-b750-6fa555de0c64"; }
+        { device = "/dev/mapper/rootvg-swap"; }
       ];
 
       console.keyMap = "us";

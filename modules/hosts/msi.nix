@@ -55,21 +55,24 @@ in
       };
 
       fileSystems = {
-  "/" =
-    { device = "/dev/mapper/rootvg-root";
-      fsType = "ext4";
-    };
+        "/" = {
+          device = "/dev/mapper/rootvg-root";
+          fsType = "ext4";
+        };
 
-  "/boot" =
-    { device = "/dev/disk/by-uuid/2819-C9A8";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+        "/boot" = {
+          device = "/dev/disk/by-uuid/2819-C9A8";
+          fsType = "vfat";
+          options = [
+            "fmask=0077"
+            "dmask=0077"
+          ];
+        };
       };
 
-  swapDevices =
-    [ { device = "/dev/mapper/rootvg-swap"; }
-    ];
+      swapDevices = [
+        { device = "/dev/mapper/rootvg-swap"; }
+      ];
 
       console.keyMap = "us";
     };
