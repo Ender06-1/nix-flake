@@ -47,36 +47,29 @@ in
             "usb_storage"
             "sd_mod"
           ];
-          kernelModules = [ ];
+          kernelModules = [ "dm-snapshot" ];
+          luks.devices.cryptroot.device = "/dev/disk/by-uuid/72771b81-de72-46dd-bdfb-421b5ec38069";
         };
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
       };
 
       fileSystems = {
-        "/" = {
-          device = "/dev/disk/by-uuid/1320bab0-857c-411a-aede-51d8b375d030";
-          fsType = "ext4";
-        };
+  "/" =
+    { device = "/dev/mapper/rootvg-root";
+      fsType = "ext4";
+    };
 
-        "/boot" = {
-          device = "/dev/disk/by-uuid/9F9E-2BC7";
-          fsType = "vfat";
-          options = [
-            "fmask=0077"
-            "dmask=0077"
-          ];
-        };
-
-        "/mnt/storage" = {
-          device = "/dev/disk/by-uuid/13ddf8d8-def6-467f-b487-1958633cf951";
-          fsType = "ext4";
-        };
+  "/boot" =
+    { device = "/dev/disk/by-uuid/2819-C9A8";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
       };
 
-      swapDevices = [
-        { device = "/dev/disk/by-uuid/89779217-c066-4c32-99cc-8928b72ba95f"; }
-      ];
+  swapDevices =
+    [ { device = "/dev/mapper/rootvg-swap"; }
+    ];
 
       console.keyMap = "us";
     };
