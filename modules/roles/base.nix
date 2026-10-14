@@ -12,7 +12,11 @@
       ];
 
       boot.loader = {
-        systemd-boot.enable = true;
+        limine = {
+          enable = true;
+          secureBoot.enable = true;
+          maxGenerations = 20;
+        };
         efi.canTouchEfiVariables = true;
       };
 
@@ -41,6 +45,7 @@
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
       environment.systemPackages = with pkgs; [
+        sbctl
         man-pages
         man-pages-posix
         tree

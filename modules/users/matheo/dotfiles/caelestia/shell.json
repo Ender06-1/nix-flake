@@ -90,7 +90,7 @@
             "nowPlaying": true
         },
         "vpn": {
-            "enabled": true,
+            "enabled": false,
             "provider": [
                 {
                     "connectCmd": [
