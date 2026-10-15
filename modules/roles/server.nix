@@ -4,9 +4,9 @@
     imports = with self.modules.nixos; [
       base
 
-      # agenix
-      # caddy
       tailscale
+      agenix
+      caddy
     ];
 
     services.openssh = {

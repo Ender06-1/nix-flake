@@ -46,6 +46,8 @@ in
             yazi
             zoxide
             immich-go
+            hdparm
+            zfs
           ];
 
           programs.git = {

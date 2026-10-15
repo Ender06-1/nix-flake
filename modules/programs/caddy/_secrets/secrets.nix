@@ -1,10 +1,10 @@
 let
-  admin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN44us5eU3w0e0qGB1/xwQLOLt9zTCpXwDyixOaaVl8m";
-  fujitsu = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICkOvyzHXL7ODR4wGx2oSdPCv8CLjWlWQaT3ESVMKAwA";
+  admin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPtfsQkSeOawtr1QvAIBMTpx5xR2/8I550VI3VHD02E";
+  hp-server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5zNX4MmEgbltKKVrXDsqVAGufH2rQwSHHbDOG/kkuJ";
 in
 {
   "caddy.age".publicKeys = [
     admin
-    fujitsu
+    hp-server
   ];
 }
