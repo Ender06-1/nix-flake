@@ -4,6 +4,10 @@ let
 in
 {
   flake.modules.nixos.${serviceName} = {
+    imports = [
+      ./_compose.nix
+    ];
+
     services.caddy.virtualHosts.${domain}.extraConfig = ''
       bind tailscale/ntfy
       tailscale_auth
@@ -11,7 +15,7 @@ in
     '';
 
     systemd.tmpfiles.rules = [
-      "d /var/cache/ntfy 0700 admin users -"
+      "d /var/stacks/ntfy/cache 0700 admin users -"
     ];
   };
 }

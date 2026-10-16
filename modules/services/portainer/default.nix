@@ -4,6 +4,10 @@ let
 in
 {
   flake.modules.nixos.${serviceName} = {
+    imports = [
+      ./_compose.nix
+    ];
+
     services.caddy.virtualHosts.${domain}.extraConfig = ''
       bind tailscale/portainer
       tailscale_auth

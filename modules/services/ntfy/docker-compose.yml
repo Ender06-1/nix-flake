@@ -1,15 +1,14 @@
+name: ntfy
 services:
-  ntfy:
-    container_name: ntfy
+  server:
     image: binwiederhier/ntfy
     restart: unless-stopped
     command:
       - serve
     environment:
       - TZ=Europe/Paris
-    user: 1000:100
     volumes:
-      - /var/cache/ntfy:/var/cache/ntfy
+      - /var/stacks/ntfy/cache:/var/cache/ntfy
     ports:
       - 127.0.0.1:8001:80
     healthcheck:
