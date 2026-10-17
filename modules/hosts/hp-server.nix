@@ -27,7 +27,7 @@ in
           admin
 
           # Services
-          portainer
+          cockpit
           ntfy
         ];
 
@@ -83,6 +83,44 @@ in
 
       services.zfs = {
         autoScrub.enable = true;
+        zed.settings = {
+          ZED_NOTIFY_VERBOSE = 1;
+          ZED_NTFY_URL = "https://ntfy.tailb1bb3f.ts.net";
+          ZED_NTFY_TOPIC = "zfs";
+        };
+      };
+
+      services.sanoid = {
+        enable = true;
+        datasets = {
+          "tank/old_data" = {
+            hourly = 24;
+            daily = 15;
+            weekly = 8;
+            monthly = 4;
+            yearly = 2;
+
+            autosnap = true;
+            autoprune = true;
+
+            pre_snapshot_script = ''
+              curl \
+                -H "Title: ZFS snapshot starting for 'tank/old_data'" \
+                -H "Priority: default" \
+                -H "Tags: floppy_disk,arrow_forward" \
+                -d "Sanoid is about to create ZFS snapshots for pool tank." \
+                https://ntfy.tailb1bb3f.ts.net/zfs
+            '';
+            post_snapshot_script = ''
+              curl \
+                -H "Title: ZFS snapshot sompleted for 'tank/old_data'" \
+                -H "Priority: default" \
+                -H "Tags: white_check_mark,floppy_disk" \
+                -d "Sanoid has completed its snapshot operation for dataset 'tank/old_data'" \
+                https://ntfy.tailb1bb3f.ts.net/zfs
+            '';
+          };
+        };
       };
 
       console.keyMap = "us";

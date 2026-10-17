@@ -11,7 +11,7 @@ in
     services.caddy.virtualHosts.${domain}.extraConfig = ''
       bind tailscale/ntfy
       tailscale_auth
-      reverse_proxy http://127.0.0.1:8001
+      reverse_proxy 127.0.0.1:8001
     '';
 
     systemd.tmpfiles.rules = [
