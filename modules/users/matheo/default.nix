@@ -61,6 +61,7 @@ in
             vlc
 
             minecraft
+            heroic
           ];
 
           programs.git = {
