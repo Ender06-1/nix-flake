@@ -29,6 +29,7 @@ in
           # Services
           cockpit
           ntfy
+          nextcloud
         ];
 
       boot = {
@@ -86,40 +87,47 @@ in
         zed.settings = {
           ZED_NOTIFY_VERBOSE = 1;
           ZED_NTFY_URL = "https://ntfy.tailb1bb3f.ts.net";
-          ZED_NTFY_TOPIC = "zfs";
+          ZED_NTFY_TOPIC = "storage";
+        };
+      };
+
+      services.smartd = {
+        enable = true;
+        autodetect = true;
+
+        notifications = {
+          mail = {
+            enable = true;
+            mailer = "${pkgs.writeShellScript "smartd-ntfy" ''
+              ${pkgs.curl}/bin/curl  \
+                -H "Title: SMARTD: ''${SMARTD_SUBJECT}" \
+                -d "''${SMARTD_FAILTYPE} Device: ''${SMARTD_DEVICE} Time: ''${SMARTD_TFIRST} Message: ''${SMARTD_FULLMESSAGE}" \
+                https://ntfy.tailb1bb3f.ts.net/hdd-pool
+            ''}";
+          };
+
+          wall.enable = false;
+          x11.enable = false;
         };
       };
 
       services.sanoid = {
         enable = true;
+        templates."production" = {
+          hourly = 24;
+          daily = 15;
+          monthly = 4;
+          yearly = 2;
+
+          autosnap = true;
+          autoprune = true;
+
+          pre_snapshot_script = "${./sanoid-pre-snapshot-ntfy.sh}";
+          post_snapshot_script = "${./sanoid-post-snapshot-ntfy.sh}";
+        };
         datasets = {
-          "tank/old_data" = {
-            hourly = 24;
-            daily = 15;
-            weekly = 8;
-            monthly = 4;
-            yearly = 2;
-
-            autosnap = true;
-            autoprune = true;
-
-            pre_snapshot_script = ''
-              curl \
-                -H "Title: ZFS snapshot starting for 'tank/old_data'" \
-                -H "Priority: default" \
-                -H "Tags: floppy_disk,arrow_forward" \
-                -d "Sanoid is about to create ZFS snapshots for pool tank." \
-                https://ntfy.tailb1bb3f.ts.net/zfs
-            '';
-            post_snapshot_script = ''
-              curl \
-                -H "Title: ZFS snapshot sompleted for 'tank/old_data'" \
-                -H "Priority: default" \
-                -H "Tags: white_check_mark,floppy_disk" \
-                -d "Sanoid has completed its snapshot operation for dataset 'tank/old_data'" \
-                https://ntfy.tailb1bb3f.ts.net/zfs
-            '';
-          };
+          "tank/old_data".use_template = [ "production" ];
+          "tank/nextcloud".use_template = [ "production" ];
         };
       };
 
