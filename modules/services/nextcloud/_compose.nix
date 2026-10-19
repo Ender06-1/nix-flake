@@ -23,7 +23,7 @@
       "nextcloud_aio_mastercontainer:/mnt/docker-aio-config:rw"
     ];
     ports = [
-      "8080:8080/tcp"
+      "8002:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

@@ -30,6 +30,7 @@ in
           cockpit
           ntfy
           nextcloud
+          immich
         ];
 
       boot = {

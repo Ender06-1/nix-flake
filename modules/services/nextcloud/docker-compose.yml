@@ -10,10 +10,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     devices: ["/dev/dri"]
     ports:
-      - "8080:8080"
+      - "8002:8080"
     environment:
       NEXTCLOUD_DATADIR: /srv/tank/nextcloud
-      APACHE_PORT: 8002
+      APACHE_PORT: 8003
       APACHE_IP_BINDING: 127.0.0.1
 
 volumes:
