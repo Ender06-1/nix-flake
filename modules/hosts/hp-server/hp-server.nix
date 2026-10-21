@@ -32,6 +32,7 @@ in
           nextcloud
           immich
           vaultwarden
+          uptime-kuma
         ];
 
       boot = {
