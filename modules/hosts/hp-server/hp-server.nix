@@ -31,6 +31,7 @@ in
           ntfy
           nextcloud
           immich
+          vaultwarden
         ];
 
       boot = {

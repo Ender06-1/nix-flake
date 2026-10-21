@@ -9,7 +9,7 @@ in
     ];
 
     services.caddy.virtualHosts.${domain}.extraConfig = ''
-      bind tailscale/ntfy
+      bind tailscale/${serviceName}
       tailscale_auth
       reverse_proxy 127.0.0.1:8001
     '';

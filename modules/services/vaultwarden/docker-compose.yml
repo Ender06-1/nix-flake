@@ -1,0 +1,11 @@
+name: vaultwarden
+services:
+  server:
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vaultwarden.tailb1bb3f.ts.net"
+    volumes:
+      - /srv/tank/vaultwarden/:/data/
+    ports:
+      - 127.0.0.1:8005:80
