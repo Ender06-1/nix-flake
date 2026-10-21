@@ -15,7 +15,7 @@
     image = "ghcr.io/nextcloud-releases/all-in-one:latest";
     environment = {
       "APACHE_IP_BINDING" = "127.0.0.1";
-      "APACHE_PORT" = "8002";
+      "APACHE_PORT" = "8003";
       "NEXTCLOUD_DATADIR" = "/srv/tank/nextcloud";
     };
     volumes = [

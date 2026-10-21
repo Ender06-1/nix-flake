@@ -129,6 +129,7 @@ in
         datasets = {
           "tank/old_data".use_template = [ "production" ];
           "tank/nextcloud".use_template = [ "production" ];
+          "tank/immich".use_template = [ "production" ];
         };
       };
 
