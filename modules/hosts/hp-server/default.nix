@@ -33,6 +33,7 @@ in
           immich
           vaultwarden
           uptime-kuma
+          firefly-iii
         ];
 
       boot = {
@@ -129,9 +130,12 @@ in
           post_snapshot_script = "${./sanoid-post-snapshot-ntfy.sh}";
         };
         datasets = {
-          "tank/old_data".use_template = [ "production" ];
-          "tank/nextcloud".use_template = [ "production" ];
+          "tank/firefly-iii".use_template = [ "production" ];
           "tank/immich".use_template = [ "production" ];
+          "tank/nextcloud".use_template = [ "production" ];
+          "tank/old_data".use_template = [ "production" ];
+          "tank/uptime-kuma".use_template = [ "production" ];
+          "tank/vaultwarden".use_template = [ "production" ];
         };
       };
 
