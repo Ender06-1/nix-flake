@@ -1,6 +1,7 @@
 { inputs, self, ... }:
 {
   flake-file.inputs = {
+    # Shell
     caelestia-shell = {
       url = "github:caelestia-dots/shell?ref=v2.5.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -12,7 +13,12 @@
       hyprland
     ];
 
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
+
     services.displayManager.ly = {
       enable = true;
       x11Support = false;
@@ -62,6 +68,13 @@
         caelestia-shell.homeManagerModules.default
       ];
 
+      wayland.windowManager.hyprland = {
+        enable = true;
+        systemd.enable = false;
+        configType = "lua";
+        extraConfig = builtins.readFile "${./hyprland.lua}";
+      };
+
       programs.caelestia = {
         enable = true;
         systemd.enable = false;
@@ -78,6 +91,14 @@
         size = 24;
 
         hyprcursor.enable = true;
+      };
+
+      gtk = {
+        enable = true;
+        iconTheme = {
+          package = pkgs.papirus-icon-theme;
+          name = "Papirus-Dark";
+        };
       };
 
       xdg.mimeApps.defaultApplicationPackages = with pkgs; [
