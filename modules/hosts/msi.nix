@@ -31,7 +31,6 @@ in
 
           # Specific programs/services
           tailscale
-          agenix
 
           # Users
           matheo
